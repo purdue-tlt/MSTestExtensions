@@ -1,5 +1,8 @@
-﻿using System.Diagnostics;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.Diagnostics;
+using System.Globalization;
+using System.Runtime.CompilerServices;
 
 namespace MSTestExtensions;
 
@@ -13,111 +16,133 @@ public static class MsTestAssertions
 		Assert.AreEqual(expected, actual);
 	}
 
-	public static void AreEqual(this IAssertion assertion, System.String expected, System.String actual, System.Boolean ignoreCase)
+	public static void AreEqual(this IAssertion assertion, string expected, string actual, bool ignoreCase)
 	{
 		Assert.AreEqual(expected, actual, ignoreCase);
 	}
 
-	public static void AreEqual(this IAssertion assertion, System.Single expected, System.Single actual, System.Single delta)
+	public static void AreEqual(this IAssertion assertion, float expected, float actual, float delta)
 	{
 		Assert.AreEqual(expected, actual, delta);
 	}
 
-	public static void AreEqual(this IAssertion assertion, System.Double expected, System.Double actual, System.Double delta,
-		System.String message, params System.Object[] parameters)
+	public static void AreEqual(this IAssertion assertion, double expected, double actual, double delta,
+		string message, [CallerArgumentExpression(nameof(expected))] string expectedExpression = "",
+		[CallerArgumentExpression(nameof(actual))]
+		string actualExpression = "")
 	{
-		Assert.AreEqual(expected, actual, delta, message, parameters);
+		Assert.AreEqual(expected, actual, delta, message, expectedExpression, actualExpression);
 	}
 
-	public static void AreEqual(this IAssertion assertion, System.Object expected, System.Object actual, System.String message,
-		params System.Object[] parameters)
+	public static void AreEqual(this IAssertion assertion, object expected, object actual, string message,
+		[CallerArgumentExpression(nameof(expected))]
+		string expectedExpression = "",
+		[CallerArgumentExpression(nameof(actual))]
+		string actualExpression = "")
 	{
-		Assert.AreEqual(expected, actual, message, parameters);
+		Assert.AreEqual(expected, actual, message, expectedExpression, actualExpression);
 	}
 
-	public static void AreEqual(this IAssertion assertion, System.Single expected, System.Single actual, System.Single delta,
-		System.String message, params System.Object[] parameters)
+	public static void AreEqual(this IAssertion assertion, float expected, float actual, float delta,
+		string message, [CallerArgumentExpression(nameof(expected))] string expectedExpression = "",
+		[CallerArgumentExpression(nameof(actual))]
+		string actualExpression = "")
 	{
-		Assert.AreEqual(expected, actual, delta, message, parameters);
+		Assert.AreEqual(expected, actual, delta, message, expectedExpression, actualExpression);
 	}
 
-	public static void AreEqual<T>(this IAssertion assertion, T expected, T actual, System.String message,
-		params System.Object[] parameters)
+	public static void AreEqual<T>(this IAssertion assertion, T expected, T actual, string message,
+		[CallerArgumentExpression(nameof(expected))]
+		string expectedExpression = "",
+		[CallerArgumentExpression(nameof(actual))]
+		string actualExpression = "")
 	{
-		Assert.AreEqual(expected, actual, message, parameters);
+		Assert.AreEqual(expected, actual, message, expectedExpression, actualExpression);
 	}
 
-	public static void AreEqual(this IAssertion assertion, System.Double expected, System.Double actual, System.Double delta)
+	public static void AreEqual(this IAssertion assertion, double expected, double actual, double delta)
 	{
 		Assert.AreEqual(expected, actual, delta);
 	}
 
-	public static void AreEqual(this IAssertion assertion, System.Object expected, System.Object actual)
+	public static void AreEqual(this IAssertion assertion, object expected, object actual)
 	{
 		Assert.AreEqual(expected, actual);
 	}
 
-	public static void AreEqual(this IAssertion assertion, System.String expected, System.String actual, System.Boolean ignoreCase,
-		System.Globalization.CultureInfo culture)
+	public static void AreEqual(this IAssertion assertion, string expected, string actual, bool ignoreCase,
+		CultureInfo culture)
 	{
 		Assert.AreEqual(expected, actual, ignoreCase, culture);
 	}
 
-	public static void AreEqual(this IAssertion assertion, System.String expected, System.String actual, System.Boolean ignoreCase,
-		System.Globalization.CultureInfo culture, System.String message, params System.Object[] parameters)
+	public static void AreEqual(this IAssertion assertion, string expected, string actual, bool ignoreCase,
+		CultureInfo culture, string message, [CallerArgumentExpression(nameof(expected))] string expectedExpression = "",
+		[CallerArgumentExpression(nameof(actual))]
+		string actualExpression = "")
 	{
-		Assert.AreEqual(expected, actual, ignoreCase, culture, message, parameters);
+		Assert.AreEqual(expected, actual, ignoreCase, culture, message, expectedExpression, actualExpression);
 	}
 
-	public static void AreEqual(this IAssertion assertion, System.String expected, System.String actual, System.Boolean ignoreCase,
-		System.String message, params System.Object[] parameters)
+	public static void AreEqual(this IAssertion assertion, string expected, string actual, bool ignoreCase,
+		string message, [CallerArgumentExpression(nameof(expected))] string expectedExpression = "",
+		[CallerArgumentExpression(nameof(actual))]
+		string actualExpression = "")
 	{
-		Assert.AreEqual(expected, actual, ignoreCase, message, parameters);
+		Assert.AreEqual(expected, actual, ignoreCase, message, expectedExpression, actualExpression);
 	}
 
-	public static void AreNotEqual(this IAssertion assertion, System.String notExpected, System.String actual, System.Boolean ignoreCase,
-		System.Globalization.CultureInfo culture)
+	public static void AreNotEqual(this IAssertion assertion, string notExpected, string actual, bool ignoreCase,
+		CultureInfo culture)
 	{
 		Assert.AreNotEqual(notExpected, actual, ignoreCase, culture);
 	}
 
-	public static void AreNotEqual(this IAssertion assertion, System.String notExpected, System.String actual, System.Boolean ignoreCase,
-		System.Globalization.CultureInfo culture, System.String message, params System.Object[] parameters)
+	public static void AreNotEqual(this IAssertion assertion, string notExpected, string actual, bool ignoreCase,
+		CultureInfo culture, string message, [CallerArgumentExpression(nameof(notExpected))] string notExpectedExpression = "",
+		[CallerArgumentExpression(nameof(actual))]
+		string actualExpression = "")
 	{
-		Assert.AreNotEqual(notExpected, actual, ignoreCase, culture, message, parameters);
+		Assert.AreNotEqual(notExpected, actual, ignoreCase, culture, message, notExpectedExpression, actualExpression);
 	}
 
-	public static void AreNotEqual(this IAssertion assertion, System.Single notExpected, System.Single actual, System.Single delta)
+	public static void AreNotEqual(this IAssertion assertion, float notExpected, float actual, float delta)
 	{
 		Assert.AreNotEqual(notExpected, actual, delta);
 	}
 
-	public static void AreNotEqual(this IAssertion assertion, System.String notExpected, System.String actual, System.Boolean ignoreCase)
+	public static void AreNotEqual(this IAssertion assertion, string notExpected, string actual, bool ignoreCase)
 	{
 		Assert.AreNotEqual(notExpected, actual, ignoreCase);
 	}
 
-	public static void AreNotEqual(this IAssertion assertion, System.Double notExpected, System.Double actual, System.Double delta)
+	public static void AreNotEqual(this IAssertion assertion, double notExpected, double actual, double delta)
 	{
 		Assert.AreNotEqual(notExpected, actual, delta);
 	}
 
-	public static void AreNotEqual(this IAssertion assertion, System.Double notExpected, System.Double actual, System.Double delta,
-		System.String message, params System.Object[] parameters)
+	public static void AreNotEqual(this IAssertion assertion, double notExpected, double actual, double delta,
+		string message, [CallerArgumentExpression(nameof(notExpected))] string notExpectedExpression = "",
+		[CallerArgumentExpression(nameof(actual))]
+		string actualExpression = "")
 	{
-		Assert.AreNotEqual(notExpected, actual, delta, message, parameters);
+		Assert.AreNotEqual(notExpected, actual, delta, message, notExpectedExpression, actualExpression);
 	}
 
-	public static void AreNotEqual(this IAssertion assertion, System.Single notExpected, System.Single actual, System.Single delta,
-		System.String message, params System.Object[] parameters)
+	public static void AreNotEqual(this IAssertion assertion, float notExpected, float actual, float delta,
+		string message, [CallerArgumentExpression(nameof(notExpected))] string notExpectedExpression = "",
+		[CallerArgumentExpression(nameof(actual))]
+		string actualExpression = "")
 	{
-		Assert.AreNotEqual(notExpected, actual, delta, message, parameters);
+		Assert.AreNotEqual(notExpected, actual, delta, message, notExpectedExpression, actualExpression);
 	}
 
-	public static void AreNotEqual(this IAssertion assertion, System.String notExpected, System.String actual, System.Boolean ignoreCase,
-		System.String message, params System.Object[] parameters)
+	public static void AreNotEqual(this IAssertion assertion, string notExpected, string actual, bool ignoreCase,
+		string message, [CallerArgumentExpression(nameof(notExpected))] string notExpectedExpression = "",
+		[CallerArgumentExpression(nameof(actual))]
+		string actualExpression = "")
 	{
-		Assert.AreNotEqual(notExpected, actual, ignoreCase, message, parameters);
+		Assert.AreNotEqual(notExpected, actual, ignoreCase, message, notExpectedExpression, actualExpression);
 	}
 
 	public static void AreNotEqual<T>(this IAssertion assertion, T notExpected, T actual)
@@ -125,48 +150,55 @@ public static class MsTestAssertions
 		Assert.AreNotEqual(notExpected, actual);
 	}
 
-	public static void AreNotEqual<T>(this IAssertion assertion, T notExpected, T actual, System.String message,
-		params System.Object[] parameters)
+	public static void AreNotEqual<T>(this IAssertion assertion, T notExpected, T actual, string message,
+		[CallerArgumentExpression(nameof(notExpected))]
+		string notExpectedExpression = "",
+		[CallerArgumentExpression(nameof(actual))]
+		string actualExpression = "")
 	{
-		Assert.AreNotEqual(notExpected, actual, message, parameters);
+		Assert.AreNotEqual(notExpected, actual, message, notExpectedExpression, actualExpression);
 	}
 
-	public static void AreNotEqual(this IAssertion assertion, System.Object notExpected, System.Object actual, System.String message,
-		params System.Object[] parameters)
+	public static void AreNotEqual(this IAssertion assertion, object notExpected, object actual, string message,
+		[CallerArgumentExpression(nameof(notExpected))]
+		string notExpectedExpression = "",
+		[CallerArgumentExpression(nameof(actual))]
+		string actualExpression = "")
 	{
-		Assert.AreNotEqual(notExpected, actual, message, parameters);
+		Assert.AreNotEqual(notExpected, actual, message, notExpectedExpression, actualExpression);
 	}
 
-	public static void AreNotEqual(this IAssertion assertion, System.Object notExpected, System.Object actual)
+	public static void AreNotEqual(this IAssertion assertion, object notExpected, object actual)
 	{
 		Assert.AreNotEqual(notExpected, actual);
 	}
 
-	public static void AreNotSame(this IAssertion assertion, System.Object notExpected, System.Object actual)
+	public static void AreNotSame(this IAssertion assertion, object notExpected, object actual)
 	{
 		Assert.AreNotSame(notExpected, actual);
 	}
 
-	public static void AreNotSame(this IAssertion assertion, System.Object notExpected, System.Object actual, System.String message,
-		params System.Object[] parameters)
+	public static void AreNotSame(this IAssertion assertion, object notExpected, object actual, string message,
+		[CallerArgumentExpression(nameof(notExpected))]
+		string notExpectedExpression = "",
+		[CallerArgumentExpression(nameof(actual))]
+		string actualExpression = "")
 	{
-		Assert.AreNotSame(notExpected, actual, message, parameters);
+		Assert.AreNotSame(notExpected, actual, message, notExpectedExpression, actualExpression);
 	}
 
-	public static void AreSame(this IAssertion assertion, System.Object expected, System.Object actual)
+	public static void AreSame(this IAssertion assertion, object expected, object actual)
 	{
 		Assert.AreSame(expected, actual);
 	}
 
-	public static void AreSame(this IAssertion assertion, System.Object expected, System.Object actual, System.String message,
-		params System.Object[] parameters)
+	public static void AreSame(this IAssertion assertion, object expected, object actual, string message,
+		[CallerArgumentExpression(nameof(expected))]
+		string expectedExpression = "",
+		[CallerArgumentExpression(nameof(actual))]
+		string actualExpression = "")
 	{
-		Assert.AreSame(expected, actual, message, parameters);
-	}
-
-	public static void Equals(this IAssertion assertion, System.Object objA, System.Object objB)
-	{
-		Assert.Equals(objA, objB);
+		Assert.AreSame(expected, actual, message, expectedExpression, actualExpression);
 	}
 
 	public static void Fail(this IAssertion assertion)
@@ -174,14 +206,14 @@ public static class MsTestAssertions
 		Assert.Fail();
 	}
 
-	public static void Fail(this IAssertion assertion, System.String message, params System.Object[] parameters)
+	public static void Fail(this IAssertion assertion, string message)
 	{
-		Assert.Fail(message, parameters);
+		Assert.Fail(message);
 	}
 
-	public static void Inconclusive(this IAssertion assertion, System.String message, params System.Object[] parameters)
+	public static void Inconclusive(this IAssertion assertion, string message)
 	{
-		Assert.Inconclusive(message, parameters);
+		Assert.Inconclusive(message);
 	}
 
 	public static void Inconclusive(this IAssertion assertion)
@@ -189,71 +221,72 @@ public static class MsTestAssertions
 		Assert.Inconclusive();
 	}
 
-	public static void IsFalse(this IAssertion assertion, System.Boolean condition)
+	public static void IsFalse(this IAssertion assertion, bool condition)
 	{
 		Assert.IsFalse(condition);
 	}
 
-	public static void IsFalse(this IAssertion assertion, System.Boolean condition, System.String message,
-		params System.Object[] parameters)
+	public static void IsFalse(this IAssertion assertion, bool condition, string message,
+		[CallerArgumentExpression(nameof(condition))]
+		string conditionExpression = "")
 	{
-		Assert.IsFalse(condition, message, parameters);
+		Assert.IsFalse(condition, message, conditionExpression);
 	}
 
-	public static void IsInstanceOfType(this IAssertion assertion, System.Object value, System.Type expectedType)
+	public static void IsInstanceOfType(this IAssertion assertion, object value, Type expectedType)
 	{
 		Assert.IsInstanceOfType(value, expectedType);
 	}
 
-	public static void IsInstanceOfType(this IAssertion assertion, System.Object value, System.Type expectedType, System.String message,
-		params System.Object[] parameters)
+	public static void IsInstanceOfType(this IAssertion assertion, object value, Type expectedType, string message,
+		[CallerArgumentExpression(nameof(value))]
+		string valueExpression = "")
 	{
-		Assert.IsInstanceOfType(value, expectedType, message, parameters);
+		Assert.IsInstanceOfType(value, expectedType, message, valueExpression);
 	}
 
-	public static void IsNotInstanceOfType(this IAssertion assertion, System.Object value, System.Type wrongType, System.String message,
-		params System.Object[] parameters)
+	public static void IsNotInstanceOfType(this IAssertion assertion, object value, Type wrongType, string message,
+		[CallerArgumentExpression(nameof(value))]
+		string valueExpression = "")
 	{
-		Assert.IsNotInstanceOfType(value, wrongType, message, parameters);
+		Assert.IsNotInstanceOfType(value, wrongType, message, valueExpression);
 	}
 
-	public static void IsNotInstanceOfType(this IAssertion assertion, System.Object value, System.Type wrongType)
+	public static void IsNotInstanceOfType(this IAssertion assertion, object value, Type wrongType)
 	{
 		Assert.IsNotInstanceOfType(value, wrongType);
 	}
 
-	public static void IsNotNull(this IAssertion assertion, System.Object value, System.String message, params System.Object[] parameters)
+	public static void IsNotNull(this IAssertion assertion, object value, string message,
+		[CallerArgumentExpression(nameof(value))] string valueExpression = "")
 	{
-		Assert.IsNotNull(value, message, parameters);
+		Assert.IsNotNull(value, message, valueExpression);
 	}
 
-	public static void IsNotNull(this IAssertion assertion, System.Object value)
+	public static void IsNotNull(this IAssertion assertion, object value)
 	{
 		Assert.IsNotNull(value);
 	}
 
-	public static void IsNull(this IAssertion assertion, System.Object value, System.String message, params System.Object[] parameters)
+	public static void IsNull(this IAssertion assertion, object value, string message,
+		[CallerArgumentExpression(nameof(value))] string valueExpression = "")
 	{
-		Assert.IsNull(value, message, parameters);
+		Assert.IsNull(value, message, valueExpression);
 	}
 
-	public static void IsNull(this IAssertion assertion, System.Object value)
+	public static void IsNull(this IAssertion assertion, object value)
 	{
 		Assert.IsNull(value);
 	}
 
-	public static void IsTrue(this IAssertion assertion, System.Boolean condition, System.String message, params System.Object[] parameters)
+	public static void IsTrue(this IAssertion assertion, bool condition, string message,
+		[CallerArgumentExpression(nameof(condition))] string conditionExpression = "")
 	{
-		Assert.IsTrue(condition, message, parameters);
+		Assert.IsTrue(condition, message, conditionExpression);
 	}
 
-	public static void IsTrue(this IAssertion assertion, System.Boolean condition)
+	public static void IsTrue(this IAssertion assertion, bool condition)
 	{
 		Assert.IsTrue(condition);
-	}
-
-	public static void ReplaceNullChars(this IAssertion assertion, System.String input)
-	{
-		Assert.ReplaceNullChars(input);
 	}
 }
